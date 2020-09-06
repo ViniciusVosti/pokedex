@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     loading: false,
     loading_more: false,
     can_load_more:false,
+    loading_pokemon: false,
     change: 0,
     change_pokemon: 0,
 }
@@ -51,6 +52,7 @@ export default (state = INITIAL_STATE, action) => {
         case 'POKEMON_GET':
             let POKEMON_GET = { ...state }
             POKEMON_GET.pokemon = action.payload
+            POKEMON_GET.loading_pokemon = false
             POKEMON_GET.change_pokemon++
             return POKEMON_GET
 
@@ -81,6 +83,11 @@ export default (state = INITIAL_STATE, action) => {
             let POKEMON_LOADING = { ...state };
             POKEMON_LOADING.loading = action.payload
             return POKEMON_LOADING
+
+        case 'GET_POKEMON_LOADING':
+            let GET_POKEMON_LOADING = { ...state };
+            GET_POKEMON_LOADING.loading_pokemon = action.payload
+            return GET_POKEMON_LOADING
             
         case 'POKEMON_LOADING_MORE':
             let POKEMON_LOADING_MORE = { ...state };

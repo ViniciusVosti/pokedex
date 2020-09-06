@@ -8,12 +8,12 @@ export class PokemonRest {
         this.node = new Node();
     }
 
-    getPokemons(obj={ page: 1, text: "" }) {
+    getPokemons(obj={ page: 0, text: "" }) {
         let metodo = global.config.getMetodo('/pokemon/', true, obj.page, obj.text) 
         return this.node.rfc(metodo, obj);
     }
     
-    getPokemon(obj={ page: 1, text: "" }) {
+    getPokemon(obj={ page: 0, text: "" }) {
         let metodo = global.config.getMetodo('/pokemon/', false, obj.page, obj.text) 
         return this.node.rfc(metodo, obj);
     }

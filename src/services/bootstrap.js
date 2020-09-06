@@ -1,4 +1,3 @@
-// import { LoginManager } from "react-native-fbsdk";
 // import SplashScreen from 'react-native-splash-screen';
 
 class Bootstrap {

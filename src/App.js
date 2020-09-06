@@ -69,7 +69,6 @@ class App extends Component {
         });
 
         if (Platform.OS !== 'ios') this.updatePermissions();
-        // else firebaseClass.getPermission();
     }
 
     render() {

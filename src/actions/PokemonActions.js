@@ -27,6 +27,7 @@ export const getPokemons = (obj={ page: 1 }) => {
 
 export const getPokemon = (obj={ pokemon_name: "" }) => {
     return dispatch => {
+        dispatch({ type: 'GET_POKEMON_LOADING', payload: true });
         global.pokemon.getPokemons(obj).then((res) => {
             dispatch({ type: 'POKEMON_GET', payload: res });
         })

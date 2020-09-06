@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Dimensions, FlatList, Image, Text, TouchableWithoutFeedback, View, ImageBackground, } from 'react-native';
+import { Dimensions, FlatList, Image, Text, TouchableWithoutFeedback, View, ImageBackground, ActivityIndicator, } from 'react-native';
 
 import { colors, p } from '../../styles';
-import { Content } from '../../components';
+import { Content, LoadingScreen } from '../../components';
 
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -90,64 +90,70 @@ class Pokemon extends Component {
                 title={"Details"}
                 bodyStyle={[p.p16]}
             >
-                <View style={[p.brad16, { height: 180 }]}>
-                    <Carousel
-                        autoplay
-                        autoplayDelay={5000}
-                        autoplayInterval={5000}
+                {!this.props.loading_pokemon ?
+                <View>
+                    <View style={[p.brad16, { height: 180 }]}>
+                        <Carousel
+                            autoplay
+                            autoplayDelay={5000}
+                            autoplayInterval={5000}
 
-                        data={Object.entries(pokemon.sprites).slice(0,8)}
-                        renderItem={this.renderSprites}
-                        
-                        sliderWidth={Dimensions.get('window').width - 32}
-                        itemWidth={Dimensions.get('window').width - 32}
-                        layout={'tinder'}
-                        onSnapToItem={(i) => {
-                            this.setState({ index_atual: i })
-                        }}
-                        
-                    />    
-                </View>
-
-                <View style={{  }}>
-                    <Pagination
-                        activeDotIndex={this.state.index_atual}
-                        dotsLength={Object.entries(pokemon.sprites).slice(0,8).length}
-                        dotColor={colors.secondary}
-                        containerStyle={[p.pv16, {}]}
-                    />
-                </View>
-
-                <View style={[p.mt16]}>
-                    <View style={[p.mb8, p.aiCenter]}>
-                        <Text style={[p.ffRegular]}>Basic information</Text>
+                            data={Object.entries(pokemon.sprites).slice(0,8)}
+                            renderItem={this.renderSprites}
+                            
+                            sliderWidth={Dimensions.get('window').width - 32}
+                            itemWidth={Dimensions.get('window').width - 32}
+                            layout={'tinder'}
+                            onSnapToItem={(i) => {
+                                this.setState({ index_atual: i })
+                            }}
+                            
+                        />    
                     </View>
-                    <Text style={[p.ffRegular, p.fsSmall]}>Name:{pokemon.name}</Text>
-                    <Text style={[p.ffRegular, p.fsSmall]}>Height:{pokemon.height}</Text>
-                    <Text style={[p.ffRegular, p.fsSmall]}>Weight: {pokemon.weight}</Text>
-                    <Text style={[p.ffRegular, p.fsSmall]}>Base experience: {pokemon.weight}</Text>
-                </View>
 
-                <View style={[p.mt16]}>
-                    <View style={[p.row, { }]}>
-                        {this.renderTab(0, "Stats")}
-                        {this.renderTab(1, "Moves")}
+                    <View style={{  }}>
+                        <Pagination
+                            activeDotIndex={this.state.index_atual}
+                            dotsLength={Object.entries(pokemon.sprites).slice(0,8).length}
+                            dotColor={colors.secondary}
+                            containerStyle={[p.pv16, {}]}
+                        />
                     </View>
-                </View>
 
-                <View style={[{ borderWidth: 1, borderColor: colors.secondary}]}>
-                    <View style={[p.mt12, p.ph16]}>
-                        <View style={[]}>
-                            <FlatList
-                                data={index_tab === 0 ? pokemon.stats : pokemon.moves}
-                                keyExtractor={(item, index) => index}
-                                renderItem={index_tab === 0 ? this.renderStats : this.renderMoves}
-                            />
+                    <View style={[p.mt16]}>
+                        <View style={[p.mb8, p.aiCenter]}>
+                            <Text style={[p.ffRegular]}>Basic information</Text>
+                        </View>
+                        <Text style={[p.ffRegular, p.fsSmall]}>Name:{pokemon.name}</Text>
+                        <Text style={[p.ffRegular, p.fsSmall]}>Height:{pokemon.height}</Text>
+                        <Text style={[p.ffRegular, p.fsSmall]}>Weight: {pokemon.weight}</Text>
+                        <Text style={[p.ffRegular, p.fsSmall]}>Base experience: {pokemon.weight}</Text>
+                    </View>
+
+                    <View style={[p.mt16]}>
+                        <View style={[p.row, { }]}>
+                            {this.renderTab(0, "Stats")}
+                            {this.renderTab(1, "Moves")}
                         </View>
                     </View>
-                </View>
 
-                <View style={[p.mb32]} />
+                    <View style={[{ borderWidth: 1, borderColor: colors.secondary}]}>
+                        <View style={[p.mt12, p.ph16]}>
+                            <View style={[]}>
+                                <FlatList
+                                    data={index_tab === 0 ? pokemon.stats : pokemon.moves}
+                                    keyExtractor={(item, index) => index}
+                                    renderItem={index_tab === 0 ? this.renderStats : this.renderMoves}
+                                />
+                            </View>
+                        </View>
+                    </View>
+
+                    <View style={[p.mb32]} />
+                </View>
+                :
+                <LoadingScreen />
+                }
 
             </Content>
         );
@@ -157,6 +163,7 @@ class Pokemon extends Component {
 const mapStateToProps = state => (
     {
         pokemon: state.PokemonReducer.pokemon,
+        loading_pokemon: state.PokemonReducer.loading_pokemon,
         change_pokemon: state.PokemonReducer.change_pokemon,
     }
 )

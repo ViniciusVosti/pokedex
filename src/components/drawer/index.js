@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { BtnDrawer } from '../../components';
 import { Icon } from '..';
 import { colors, p, } from '../../styles'
-import styles from './styles';
 
 export default class MenuContainer extends Component {
 	

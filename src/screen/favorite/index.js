@@ -10,6 +10,7 @@ import { Content, EmptyScreen, Icon } from '../../components';
 import {
     removeFavorite,
 } from '../../actions';
+
 import TouchableScale from 'react-native-touchable-scale';
 
 class Favorite extends Component {
@@ -23,7 +24,6 @@ class Favorite extends Component {
     }
 
     pokemon = ({ item, index }) => {
-        console.log("item", item)
         return(
             <TouchableWithoutFeedback onPress={() => {
                 Actions.pokemon({ pokemon_name: item.name })
@@ -61,12 +61,6 @@ class Favorite extends Component {
         )
     }
 
-    listEmptyComponent = () => {
-        return(
-            <EmptyScreen />
-        )
-    }
-
     render() {
         return( 
             <Content 
@@ -84,7 +78,9 @@ class Favorite extends Component {
 
                     renderItem={this.pokemon}
 
-                    ListEmptyComponent={this.listEmptyComponent}
+                    ListEmptyComponent={() => (
+                        <EmptyScreen />
+                    )}
                 />
 
             </Content>

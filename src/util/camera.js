@@ -23,9 +23,9 @@ export default class Camera extends Component {
           cameraRoll: true,
           path: 'images'
         },
-        cancelButtonTitle: 'Cancelar',
-        takePhotoButtonTitle: 'Tire uma Foto',
-        chooseFromLibraryButtonTitle: 'Escolha uma Foto',
+        cancelButtonTitle: 'Cancel',
+        takePhotoButtonTitle: 'Take a picture',
+        chooseFromLibraryButtonTitle: 'Library',
         mediaType: 'photo',
         maxWidth: 800,
         maxHeight: 800,

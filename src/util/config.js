@@ -9,8 +9,7 @@ var config = {
     offset: 20, // Quantidade de itens por paginação
     isDebuggingEnabled: (typeof atob !== 'undefined'), // verifica se o debugging esta ativo ou não
 
-
-    getMetodo: (metodo="", pagination=false, page=1, text="") => {
+    getMetodo: (metodo="", pagination=false, page=0, text="") => {
         if(pagination){
             return metodo + text + "?offset=" + (page*global.config.offset) + "?limit=" + global.config.offset
         }
@@ -18,8 +17,6 @@ var config = {
             return metodo
         }
     }
-
-    
 }
 
 global.config = config;

@@ -8,6 +8,7 @@ export default class Loading extends Component {
             loading:false,
         }
     }
+
     componentDidMount(){
         global.show = () => {
             this.loadingShow();
@@ -16,14 +17,16 @@ export default class Loading extends Component {
             this.loadingHide();
         }
     }
+
     loadingShow = () => {
         this.setState({loading: true});
     }
+
     loadingHide = () => {
         this.setState({loading: false});
     }
+
     _renderLoad = () =>{
-       
         return (
             <Modal
                 animationType = 'fade'
@@ -44,7 +47,6 @@ export default class Loading extends Component {
                         
                 </View>
             </Modal>
-            
           )
     }
 

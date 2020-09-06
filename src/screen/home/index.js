@@ -20,16 +20,16 @@ class Home extends Component {
         super(props)
         
         this.state = {
-            page: 1,
+            page: 0,
             text: "",
         }
     }
 
     componentDidMount = () => {
-        this.init(1)
+        this.init(0)
     }
 
-    init = (page = 1) => {
+    init = (page = 0) => {
         this.setState({ page } , () => {
             this.props.getPokemons({ page, text: this.state.text.toLowerCase() })
         })
@@ -38,14 +38,11 @@ class Home extends Component {
     onEndReached = () => {
         if((this.props.pokemons.length % global.config.offset) !== 0 || this.props.loading_more) return
 
-        this.setState({ page: this.state.page + 1 }, () => {
-            this.init(this.state.page + 1);
-        })
+        this.init(this.state.page + 1);
     }
 
     filterText = (text) => {
         this.setState({ text }, () => {
-
             if(!this.timeout){
                 this.timeout = null;
                 clearTimeout(this.timeout);
@@ -138,7 +135,7 @@ class Home extends Component {
                     refreshing={this.props.loading}
                     onRefresh={() => this.init()}
 
-                    onEndReachedThreshold={0}
+                    onEndReachedThreshold={0.05}
                     onEndReached={() => this.onEndReached()}
                     ListEmptyComponent={this.listEmptyComponent}
 
