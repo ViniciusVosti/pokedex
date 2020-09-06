@@ -26,4 +26,4 @@ informações diferentes, exemplo: Listagem de N pokemons contia arrray de objet
 
 - [Snorlax durmindo](https://www.pngfind.com/mpng/iTxbxoo_transparent-snorlax-pokemon-snorlax-fusion-hd-png-download/)
 - [Icone do app](https://icon-library.com/icon/pokedex-icon-5.html)
-- [Pokebola feita por [Nikita Golubev](Nikita Golubev)](https://www.flaticon.com/free-icon/pokeball_361998?term=pokeball&page=1&position=2)
+- [Pokebola](https://www.flaticon.com/free-icon/pokeball_361998?term=pokeball&page=1&position=2) feita por [Nikita Golubev](https://www.flaticon.com/authors/nikita-golubev)
