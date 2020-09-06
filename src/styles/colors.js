@@ -19,7 +19,7 @@ export default {
     greenDark: "#33683c",
     greenLight: "#c2f4c1",
 
-    divider: "#BDBDBD",
+    divider: "#e9e9e9",
     error: "#951d23",
     black: "#000000",
     dark: '#2d2d2d',

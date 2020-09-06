@@ -11,8 +11,8 @@ export const Content = (props) => {
 
             {!props.noHeader && <StatusBar backgroundColor={props.statusBarColor ? props.statusBarColor : props.backgroundColor ? props.backgroundColor : colors.secondary} barStyle={'light-content'} {...props} />}
             {!props.noHeader && <Header {...props} />}
-            {!props.noScroll && <ContentNative style={[p.f1, { backgroundColor: props.backgroundColor ? props.backgroundColor : colors.white }, props.bodyStyle]} {...props} />}
-            {props.noScroll && <View style={[p.f1, { backgroundColor: props.backgroundColor ? props.backgroundColor : colors.white }, props.bodyStyle]}  {...props} />}
+            {!props.noScroll && <ContentNative style={[p.f1, { backgroundColor: props.backgroundColor ? props.backgroundColor : colors.divider }, props.bodyStyle]} {...props} />}
+            {props.noScroll && <View style={[p.f1, { backgroundColor: props.backgroundColor ? props.backgroundColor : colors.divider }, props.bodyStyle]}  {...props} />}
 
         </Container>
     )
