@@ -9,10 +9,15 @@ o app possui as seguintes funcionalidades:
 
 Os favoritos são salvos de forma offline, enquanto que as listagens usam a API
 
-# Dificuldades encontradas
+# Instalação
+
+1. Rodar o comando ```npm i``` na pasta raiz do projeto
+2. ```react-native run-android```
+
+# Limitações / Dificuldades
 
 Devido ao uso de uma API externa e não tratavel, a home por exemplo ficou sem muitas informações ja que as listagens de forma geral contia poucas informações, fora que alguns GET retornavam
-informações diferentes, exemplo: Listagem de N pokemons contia arrray de objetos com name e url, quando era um unico pokemon, retornava um objeto com muitos detalhes do mesmo.
+informações diferentes, exemplo: Listagem de N pokemons contia array de objetos com name e url, quando era um unico pokemon, retornava um objeto com muitos detalhes do mesmo.
 
 # Próximas etapas
 
